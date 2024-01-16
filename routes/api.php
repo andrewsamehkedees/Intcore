@@ -50,7 +50,6 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
 Route::group(['middleware' => ['auth:sanctum']], function () {
 
     Route::post('/article', [ArticleController::class, 'store']);
-    Route::put('/article/{id}', [ArticleController::class, 'update']);
     Route::patch('/article/{id}/isactivate', [ArticleController::class, 'activateSwitch']);
     Route::delete('/article/{id}', [ArticleController::class, 'destroy']);
     Route::get('/article/{id}', [ArticleController::class, 'show']);
