@@ -19,6 +19,12 @@ class ArticleController extends Controller
 
         return response()->json(['data' => $article]);
     }
+    public function update(Request $request,$id)
+    {
+        $userDTO = ArticleDTO::fromRequest($request);
+        $article = $this->articleService->setDto($userDTO)->update($id);
+        return response()->json(['data' => $article]);
+    }
 
 
 

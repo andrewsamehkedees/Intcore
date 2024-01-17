@@ -48,6 +48,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
 
     Route::post('/article', [ArticleController::class, 'store']);
     Route::patch('/article/{id}/isactivate', [ArticleController::class, 'activateSwitch']);
+    Route::put('/article/{id}', [ArticleController::class, 'update']);
     Route::delete('/article/{id}', [ArticleController::class, 'destroy']);
     Route::get('/article/{id}', [ArticleController::class, 'show']);
 

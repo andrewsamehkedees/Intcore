@@ -37,6 +37,14 @@ class ArticleService
 
         return $article;
     }
+    public function update($id)
+    {
+        $imageName = ImageService::setImage($this->dto->getImage());
+        $this->dto->setAuthorId(auth()->id());
+        $article = $this->articleRepository->create($this->dto, $imageName,$id);
+
+        return $article;
+    }
 
     public function activateSwitch()
     {

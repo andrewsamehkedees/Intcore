@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('articlecategorys', function(Blueprint $table){
+        Schema::create('articlecategories', function(Blueprint $table){
             $table->id();
             $table->foreignId('category_id');
             $table->foreignId('article_id');

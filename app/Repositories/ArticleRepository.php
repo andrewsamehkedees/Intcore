@@ -7,7 +7,7 @@ use App\DTO\ArticleDTO;
 
 class ArticleRepository implements ArticleRepositoryInterface
 {
-    public function create(ArticleDTO $articleDTO,string|null $imageName)
+    public function create(ArticleDTO $articleDTO, string|null $imageName)
     {
         $article = Article::create([
             'title' => $articleDTO->getTitle(),
@@ -17,6 +17,16 @@ class ArticleRepository implements ArticleRepositoryInterface
         ]);
         $article->save();
         $article->categories()->attach($articleDTO->getCategorie());
+        return $article;
+    }
+    public function update(ArticleDTO $articleDTO, string|null $imageName,$id)
+    {
+        $article = $this->findById($id);   
+        $article->title = $articleDTO->getTitle();
+        $article->author_id = $articleDTO->getAuthorId();
+        $article->description = $articleDTO->getDescription();
+        $article->image = $imageName;
+        $article->save();
         return $article;
     }
     public function findById($id)
@@ -31,5 +41,4 @@ class ArticleRepository implements ArticleRepositoryInterface
     {
         return Article::where('author_id', $id)->get();
     }
-
 }
