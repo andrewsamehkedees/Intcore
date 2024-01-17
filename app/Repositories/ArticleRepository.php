@@ -11,7 +11,7 @@ class ArticleRepository implements ArticleRepositoryInterface
     {
         $article = Article::create([
             'title' => $articleDTO->getTitle(),
-            'article_id' => $articleDTO->getAuthorId(),
+            'author_id' => $articleDTO->getAuthorId(),
             'description' => $articleDTO->getDescription(),
             'image' => $imageName,
         ]);

@@ -12,9 +12,9 @@ class ArticleServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        $this->app->singleton(ArticleService::class, function ($app) {
-            return new ArticleService();
-        });
+        // $this->app->singleton(ArticleService::class, function ($app) {
+        //     return new ArticleService();
+        // });
     }
 
     /**

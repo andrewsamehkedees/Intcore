@@ -32,7 +32,7 @@ class ArticleService
     public function store()
     {
         $imageName = ImageService::setImage($this->dto->getImage());
-
+        $this->dto->setAuthorId(auth()->id());
         $article = $this->articleRepository->create($this->dto, $imageName);
 
         return $article;
