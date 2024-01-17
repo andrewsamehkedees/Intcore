@@ -22,10 +22,21 @@ class ArticleRepository implements ArticleRepositoryInterface
     public function update(ArticleDTO $articleDTO, string|null $imageName,$id)
     {
         $article = $this->findById($id);   
-        $article->title = $articleDTO->getTitle();
-        $article->author_id = $articleDTO->getAuthorId();
-        $article->description = $articleDTO->getDescription();
-        $article->image = $imageName;
+        if ($articleDTO->getTitle() !== null) {
+            $article->title = $articleDTO->getTitle();
+        }
+    
+        if ($articleDTO->getAuthorId() !== null) {
+            $article->author_id = $articleDTO->getAuthorId();
+        }
+    
+        if ($articleDTO->getDescription() !== null) {
+            $article->description = $articleDTO->getDescription();
+        }
+    
+        if ($imageName !== null) {
+            $article->image = $imageName;
+        }
         $article->save();
         return $article;
     }

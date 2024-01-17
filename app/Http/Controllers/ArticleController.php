@@ -22,7 +22,8 @@ class ArticleController extends Controller
     public function update(Request $request,$id)
     {
         $userDTO = ArticleDTO::fromRequest($request);
-        $article = $this->articleService->setDto($userDTO)->update($id);
+
+        $article = $this->articleService->setDto($userDTO)->setID($id)->update();
         return response()->json(['data' => $article]);
     }
 

@@ -37,11 +37,11 @@ class ArticleService
 
         return $article;
     }
-    public function update($id)
+    public function update()
     {
         $imageName = ImageService::setImage($this->dto->getImage());
         $this->dto->setAuthorId(auth()->id());
-        $article = $this->articleRepository->create($this->dto, $imageName,$id);
+        $article = $this->articleRepository->create($this->dto, $imageName,$this->id);
 
         return $article;
     }
