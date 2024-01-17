@@ -7,7 +7,7 @@ use App\DTO\ArticleDTO;
 
 class ArticleRepository implements ArticleRepositoryInterface
 {
-    public function create(ArticleDTO $articleDTO, string $imageName)
+    public function create(ArticleDTO $articleDTO,string|null $imageName)
     {
         $article = Article::create([
             'title' => $articleDTO->getTitle(),

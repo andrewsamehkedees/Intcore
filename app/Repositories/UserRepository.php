@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Hash;
 
 class UserRepository implements UserRepositoryInterface
 {
-    public function create(UserDTO $userDTO, string $imageName)
+    public function create(UserDTO $userDTO,string|null $imageName)
     {
         return User::create([
             'name' => $userDTO->getName(),

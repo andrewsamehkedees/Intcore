@@ -30,8 +30,10 @@ class AuthorAuthService
         $imageName = ImageService::setImage($this->dto->getImage());
 
         $user = $this->authorRepository->create($this->dto, $imageName);
-
+        
         dispatch(new SendAuthorVerificationEmail($user, $user->id));
+
+        return $user;
     }
 
     public function login()

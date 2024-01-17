@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Hash;
 
 class AuthorRepository implements AuthorRepositoryInterface
 {
-    public function create(AuthorDTO $authorDTO, string $imageName)
+    public function create(AuthorDTO $authorDTO, string|null $imageName)
     {
         return Author::create([
             'name' => $authorDTO->getName(),
