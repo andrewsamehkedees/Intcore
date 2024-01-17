@@ -13,11 +13,15 @@ class FavoriteController extends Controller
     
     public function store($id)
     {
-        return $this->favoriteService->setArticleId($id)->store();
+        $favorite = $this->favoriteService->setArticleId($id)->store();
+        return response()->json(['data' => $favorite]);
+
     }
 
     public function index()
     {
-        return $this->favoriteService->index();
+        $favorites = $this->favoriteService->index();
+        return response()->json(['data' => $favorites]);
+
     }
 }

@@ -21,13 +21,14 @@ class AuthorAuthController extends Controller
 
         $authorSer =  $this->authorAuthService->setDto($authorDTO)->handle();
 
-        return $authorSer;
+        return response()->json(['data' => $authorSer]);
     }
 
     public function login(Request $request)
     {
         $authorDTO = AuthorDTO::fromRequest($request);
-        return $this->authorAuthService->setDto($authorDTO)->login();
+        $login = $this->authorAuthService->setDto($authorDTO)->login();
+        return response()->json(['data' => $login]);
     }
     
     public function verifyEmail(Request $request)

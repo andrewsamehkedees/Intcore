@@ -21,13 +21,16 @@ class UserAuthController extends Controller
 
         $userSer =  $this->userAuthService->setDto($userDTO)->handle();
 
-        return $userSer;
+        return response()->json(['data' => $userSer]);
+
     }
 
     public function login(Request $request)
     {
         $userDTO = UserDTO::fromRequest($request);
-        return $this->userAuthService->setDto($userDTO)->login();
+        $login = $this->userAuthService->setDto($userDTO)->login();
+        return response()->json(['data' => $login]);
+
     }
 
     public function verifyEmail(Request $request)

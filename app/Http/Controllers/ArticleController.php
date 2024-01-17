@@ -17,7 +17,7 @@ class ArticleController extends Controller
         $userDTO = ArticleDTO::fromRequest($request);
         $article = $this->articleService->setDto($userDTO)->store();
 
-        return response()->json($article, 201);
+        return response()->json(['data' => $article]);
     }
 
 
@@ -26,7 +26,8 @@ class ArticleController extends Controller
     {
         $article = $this->articleService->setID($id)->activateSwitch();
 
-        return response()->json($article, 200);
+        return response()->json(['data' => $article]);
+
     }
 
 
@@ -34,13 +35,15 @@ class ArticleController extends Controller
     {
         $article = $this->articleService->setID($id)->destroy();
 
-        return response()->json(null, 204);
+        return response()->json(['data' => null]);
+
     }
 
     public function show($id)
     {
         $data = $this->articleService->setID($id)->show();
 
-        return response()->json($data, 200);
+        return response()->json(['data' => $data]);
+
     }
 }

@@ -19,12 +19,14 @@ class UserController extends Controller
 
     public function showAuthors()
     {
-        return $this->userService->showAuthors();
+        $authors = $this->userService->showAuthors();
+        return response()->json(['data' => $authors]);
     }
 
     public function showArticlesForAuthor(string $id)
     {
-        return $this->userService->setId($id)->showArticlesForAuthor();
+        $articles = $this->userService->setId($id)->showArticlesForAuthor();
+        return response()->json(['data' => $articles]);
     }
 
     

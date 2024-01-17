@@ -13,11 +13,13 @@ class CommentController extends Controller
     
     public function store(Request $request)
     {
-        return $this->commentService->store($request->comment, $request->articleId);
+        $comment = $this->commentService->store($request->comment, $request->articleId);
+        return response()->json(['data' => $comment]);
     }
 
     public function delete($id)
     {
-        return $this->commentService->setCommentId($id)->delete();
+        $this->commentService->setCommentId($id)->delete();
+        return response()->json(['data' => null]);
     }
 }

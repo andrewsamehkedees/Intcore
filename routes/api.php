@@ -9,9 +9,7 @@ use App\Http\Controllers\CommentController;
 use App\Http\Controllers\FeatureController;
 use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\Auth\UserAuthController;
-use App\Http\Controllers\Auth\Author\AuthController;
 use App\Http\Controllers\Auth\Author\AuthorAuthController;
-use App\Http\Controllers\Auth\User\AuthController as UAuthController;
 
 /*
 |--------------------------------------------------------------------------

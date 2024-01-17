@@ -15,13 +15,13 @@ class FeatureController extends Controller
     {
         $article = $this->featureService->setId($id)->store();
 
-        return response()->json($article, 200);
+        return response()->json(['data' => $article]);
     }
 
     public function index()
     {
         $articles = $this->featureService->index();
 
-        return response()->json($articles, 200);
+        return response()->json(['data' => $articles]);
     }
 }
