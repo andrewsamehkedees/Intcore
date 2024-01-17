@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Services\CommentService;
+use App\DTO\CommentDTO;
 use Illuminate\Http\Request;
+use App\Services\CommentService;
 
 class CommentController extends Controller
 {
@@ -11,9 +12,11 @@ class CommentController extends Controller
     {
     }
     
-    public function store(Request $request)
+    public function store(Request $request, $id)
     {
-        $comment = $this->commentService->store($request->comment, $request->articleId);
+        $commentDTO = CommentDTO::fromRequest($request);
+        $commentDTO->setArticleId($id);
+        $comment = $this->commentService->setDto($commentDTO)->store();
         return response()->json(['data' => $comment]);
     }
 

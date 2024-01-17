@@ -33,11 +33,10 @@ class CommentService
     public function store()
     {
         $userId = auth()->id();
-        $user = UserRepository::findByid($userId);
+        $this->dto->setUserId($userId);
         $article = Article::find($this->dto->getArticleId());
-
         foreach ($article->author->suspendedUsers as $suspendedUserActual) {
-            if ($suspendedUserActual->id == $user->id) {
+            if ($suspendedUserActual->id == $userId) {
                 return response()->json(['error' => 'You are suspended from commenting on this author\'s articles'], 403);
             }
         }

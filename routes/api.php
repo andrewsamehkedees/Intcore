@@ -38,7 +38,6 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     //favorites
     Route::post('/articles/{id}/favorite', [FavoriteController::class, 'store']);
     Route::get('/articles/favorites', [FavoriteController::class, 'index']);
-
 });
 
 // Route::get('/verify-email', [UserController::class,'verifyEmail']);
@@ -51,17 +50,18 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::patch('/article/{id}/isactivate', [ArticleController::class, 'activateSwitch']);
     Route::delete('/article/{id}', [ArticleController::class, 'destroy']);
     Route::get('/article/{id}', [ArticleController::class, 'show']);
-    
+
     //features
     Route::patch('/article/{id}/feature', [FeatureController::class, 'store']);
     Route::get('/articles/featured', [FeatureController::class, 'index']);
 
+    //author suspend
+    Route::post('/suspend/{id}', [AuthorController::class, 'suspendUser']);
 });
 
 // Author routes
 Route::post('/author/register', [AuthorAuthController::class, 'register']);
 Route::post('/author/login', [AuthorAuthController::class, 'login']);
-Route::post('/suspend/{id}', [AuthorController::class, 'suspendUser']);
 
 
 // Route::Resource('article/', [ArticleController::class]);
